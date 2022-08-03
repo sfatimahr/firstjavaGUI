@@ -1,0 +1,94 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class PostalService extends JFrame {
+    private JPanel mainPanel;
+    private JTextArea welcomeMsg;
+    private JTextField textField1;
+    private JLabel typeLabel;
+    private JLabel addressLabel;
+    private JLabel street2Label;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JComboBox senderState;
+    private JTextField weight;
+    private JButton calcButton;
+    private JTextArea priceVal;
+    private JComboBox recState;
+    private JRadioButton documentRadioButton;
+    private JRadioButton parcelRadioButton;
+    private JLabel lblPrice;
+    private ButtonGroup grpType;
+
+    public PostalService() {
+        super.setContentPane(mainPanel);
+        super.setTitle("Postal Service");
+
+        grpType = new ButtonGroup();
+        grpType.add(documentRadioButton);
+        grpType.add(parcelRadioButton);
+
+        super.pack();
+        super.setVisible(true);
+        super.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+
+        calcButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String weightstr = weight.getText();
+                double berat = Double.parseDouble(weightstr);
+
+                if (documentRadioButton.isSelected()){
+                    if (senderState.getSelectedItem().equals("Sabah")){
+                        if (recState.getSelectedItem().equals("Sabah"))
+                            priceVal.setText("RM " + berat * 0.5);
+                        else if (recState.getSelectedItem().equals("Sarawak"))
+                            priceVal.setText("RM " + berat * 0.5);
+                        else
+                            priceVal.setText("RM " + berat * 1.2);
+                    }
+                    else if (senderState.getSelectedItem().equals("Sarawak")){
+                        if (recState.getSelectedItem().equals("Sarawak"))
+                            priceVal.setText("RM " + berat * 0.5);
+                        else if (recState.getSelectedItem().equals("Sabah"))
+                            priceVal.setText("RM " + berat * 0.5);
+                        else
+                            priceVal.setText("RM " + berat * 1.2);
+                    }
+                    else
+                        priceVal.setText("RM " + berat * 0.3);
+                }
+                else{
+                    if (senderState.getSelectedItem().equals("Sabah")){
+                        if (recState.getSelectedItem().equals("Sabah"))
+                            priceVal.setText("RM " + berat * 1.2);
+                        else if (recState.getSelectedItem().equals("Sarawak"))
+                            priceVal.setText("RM " + berat * 1.2);
+                        else
+                            priceVal.setText("RM " + berat * 2.4);
+                    }
+                    else if (senderState.getSelectedItem().equals("Sarawak")){
+                        if (recState.getSelectedItem().equals("Sarawak"))
+                            priceVal.setText("RM " + berat * 1.2);
+                        else if (recState.getSelectedItem().equals("Sabah"))
+                            priceVal.setText("RM " + berat * 1.2);
+                        else
+                            priceVal.setText("RM " + berat * 2.4);
+                    }
+                    else
+                        priceVal.setText("RM " + berat * 2);
+                }
+
+            }
+        });
+    }
+
+
+    public static void main(String args[]) {
+        JFrame frame = new PostalService();
+    }
+}

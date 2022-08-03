@@ -1,0 +1,40 @@
+if (documentRadioButton.isSelected()){
+                    if (senderState.getSelectedItem().equals("Sabah")){
+                        if (recState.getSelectedItem().equals("Sabah"))
+                            priceVal.setText("RM " + berat * 0.5);
+                        else if (recState.getSelectedItem().equals("Sarawak"))
+                            priceVal.setText("RM " + berat * 0.5);
+                        else
+                            priceVal.setText("RM " + berat * 1.2);
+                    }
+                    else if (senderState.getSelectedItem().equals("Sarawak")){
+                        if (recState.getSelectedItem().equals("Sarawak"))
+                            priceVal.setText("RM " + berat * 0.5);
+                        else if (recState.getSelectedItem().equals("Sabah"))
+                            priceVal.setText("RM " + berat * 0.5);
+                        else
+                            priceVal.setText("RM " + berat * 1.2);
+                    }
+                    else
+                        priceVal.setText("RM " + berat * 0.3);
+                }
+                else{
+                    if (senderState.getSelectedItem().equals("Sabah")){
+                        if (recState.getSelectedItem().equals("Sabah"))
+                            priceVal.setText("RM " + berat * 1.2);
+                        else if (recState.getSelectedItem().equals("Sarawak"))
+                            priceVal.setText("RM " + berat * 1.2);
+                        else
+                            priceVal.setText("RM " + berat * 2.4);
+                    }
+                    else if (senderState.getSelectedItem().equals("Sarawak")){
+                        if (recState.getSelectedItem().equals("Sarawak"))
+                            priceVal.setText("RM " + berat * 1.2);
+                        else if (recState.getSelectedItem().equals("Sabah"))
+                            priceVal.setText("RM " + berat * 1.2);
+                        else
+                            priceVal.setText("RM " + berat * 2.4);
+                    }
+                    else
+                        priceVal.setText("RM " + berat * 2);
+                }
